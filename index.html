@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bentengan</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/start-btn.css">
+</head>
+
+<body>
+    <audio src="a bar in the village.mp3" id="ost" loop></audio>
+
+    <!-- ================================== start button ================================== -->
+    <div id="overlay">
+        <div id="popup">
+            <button id="startButton"></button>
+        </div>
+    </div>
+    <!-- ================================== start button ================================== -->
+
+
+    <!-- ================================== in game component ================================== -->
+    <div id="home-flag"></div>
+    <div id="enemy"></div>
+
+    <div id="character"></div>
+    <div id="finish"></div>
+    <!-- ================================== in game component ================================== -->
+
+
+    <!-- ================================== controller ================================== -->
+    <div class="controller-container">
+        <div class="joystick">
+            <div id="up-btn" class="button up-button" data-direction="up"></div>
+            <div id="down-btn" class="button down-button" data-direction="down"></div>
+            <div id="left-btn" class="button left-button" data-direction="left"></div>
+            <div id="right-btn" class="button right-button" data-direction="right"></div>
+        </div>
+
+        <div class="dodge">
+            <div id="dodge-btn" class="button"></div>
+        </div>
+    </div>
+
+
+
+ 
+    <!-- ================================== controller ================================== -->
+
+
+
+
+<script src="game.js"></script>
+<script>
+            document.getElementById("startButton").addEventListener("click", function() {
+    document.getElementById("overlay").style.display = "none";
+});
+
+</script>
+</body>
+
+
+</html>

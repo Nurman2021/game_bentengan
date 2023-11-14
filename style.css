@@ -1,0 +1,170 @@
+
+* {
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+  }
+
+  body{
+    background-image: url(img/lapangan.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  #game-container {
+    position: relative;
+    width: 90vw;
+    height: 25vh;
+    height: 80vh;
+    border: 1px solid black;
+  }
+
+  #character {
+    width: 120px;
+    height: 120px;
+    background: url("img/sprite/blue-running-sheet.png") 0px 0px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+  }
+
+  #enemy{
+    width: 120px;
+    height: 120px;
+    background-color: red;
+    background: url("img/sprite/red-running-sheet.png")0px 0px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+  }
+
+  #enemy.flipped{
+    transform: scaleX(-1);
+  }
+
+  #finish {
+    bottom: 50%;
+    right: 20px;
+    height: 200px;
+    width: 100px;
+    position: absolute;
+    background-image: url("img/blue-flag.gif");
+    background-size: cover;
+    background-position: center;
+  }
+
+  #home-flag{
+    bottom: 50%;
+    left: 20px;
+    height: 200px;
+    width: 100px;
+    position: absolute;
+    background-image: url("img/red-flag.gif");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .joystick {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* overflow: hidden; */
+    /* margin-top: 70vh; */
+  
+    /* margin: 50px auto; */
+    left: 10%;
+    opacity: 0.5;
+  }
+
+  .controller-container{
+    width:100vw;
+    position: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70vh;
+    /* margin-left: 50%; */
+    /* padding: 100px; */ 
+    box-sizing: border-box;
+   
+    
+  }
+
+  #dodge-btn{
+    position: relative;
+    background-image: url("/img/controller/dodge.png");
+    background-position: center;
+    background-size: cover;
+    right: 200px;
+    opacity: 0.5;
+  }
+
+
+
+  .button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .button:active {
+    background-color: #777;
+    transform: scale(0.9);
+    /* Efek skala saat tombol ditekan */
+    opacity: 1;
+  }
+
+  .up-button {
+    top: 0;
+    left: 35px;
+    background-image: url("img/controller/up.png");
+    background-position: center;
+    background-size: cover;
+    
+
+  }
+
+  .down-button {
+    bottom: 0;
+    left: 35px;
+    background-image: url("img/controller/bottom.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .left-button {
+    top: 35px;
+    left: 0;
+    background-image: url("img/controller/left.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .right-button {
+    top: 35px;
+    right: 0;
+    background-image: url("img/controller/right.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+
+  @media (max-width: 480px) {
+    .joystick {
+      height: 100px;
+      width: 100px;
+    }
+  }
