@@ -164,6 +164,7 @@ function moveEnemyTowardsPlayer(){
 function moveCharacter(deltaX, deltaY){
     const characterPosition = character.getBoundingClientRect();
     const benderaPosition = bendera.getBoundingClientRect();
+    const enemyPosition = enemy.getBoundingClientRect();
 
 
     let characterX = characterPosition.left;
@@ -187,6 +188,12 @@ function moveCharacter(deltaX, deltaY){
         alert('YOU WIN!!!');
         return;
     }
+    if(isColliding(characterPosition, enemyPosition)){
+        alert('YOU LOSE');
+        return;
+    }
+
+
 
     function isColliding(characterPosition, benderaPosition){
         return (
