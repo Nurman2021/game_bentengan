@@ -159,7 +159,7 @@ function moveEnemyTowardsPlayer(){
 
 // =============================================================== enemy movement-end =======================================================================
 
-
+let isCollisionOccurred = false;
 // =============================================================== player movement =======================================================================
 function moveCharacter(deltaX, deltaY){
     const characterPosition = character.getBoundingClientRect();
@@ -186,10 +186,12 @@ function moveCharacter(deltaX, deltaY){
 
     if(isColliding(characterPosition, benderaPosition)){
         alert('YOU WIN!!!');
+        isCollisionOccurred = true;
         return;
     }
     if(isColliding(characterPosition, enemyPosition)){
         alert('YOU LOSE');
+        isCollisionOccurred = true;
         return;
     }
 
