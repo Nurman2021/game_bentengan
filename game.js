@@ -9,7 +9,9 @@ let dodgeBtn = document.getElementById("dodge-btn");
 
 let startBtn = document.getElementById("startButton");
 let isRunning = false;
-let soudtrack = document.getElementById("ost")
+let soudtrack = document.getElementById("ost");
+let windSound = document.getElementById("victory");
+let defeatSound = document.getElementById("defeat");
 
 
 
@@ -188,6 +190,8 @@ function moveCharacter(deltaX, deltaY) {
         winner.innerText = 'WIN'
         character.style.display = 'none';
         enemy.style.display = 'none';
+        windSound.play();
+        soudtrack.pause();
         return;
     }
     if (isColliding(characterPosition, enemyPosition)) {
@@ -197,6 +201,8 @@ function moveCharacter(deltaX, deltaY) {
         winner.innerText = 'LOSE';
         character.style.display = 'none';
         enemy.style.display = 'none';
+        defeatSound.play();
+        soudtrack.pause();
         return;
     }
 
