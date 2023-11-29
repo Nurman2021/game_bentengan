@@ -1,7 +1,3 @@
-
-
-
-
 let character = document.getElementById("character");
 let enemy = document.getElementById("enemy");
 let leftBtn = document.getElementById("left-btn");
@@ -21,21 +17,21 @@ let soudtrack = document.getElementById("ost")
 // frame saat ini
 let isDodging = false;
 let dodgeDistance = 100;
-let dodgeDuration = 500; 
+let dodgeDuration = 500;
 let moveDelay = 100;
 
 // total frame
-let totalFrame = 1560;
+let totalFrame = 650;
 let moveIntervalId;
 
 
 var player = document.getElementById("player");
 
-startBtn.addEventListener("click", function(){
+startBtn.addEventListener("click", function () {
     setInterval(moveEnemyTowardsPlayer, 30);
     soudtrack.play();
     toggleFullscreen();
-    runAnimation(enemy, 30, 1560 );
+    runAnimation(enemy, 30, 1560);
 })
 
 
@@ -45,71 +41,71 @@ let animationRunning = false;
 
 // =============================================================== controller =======================================================================
 // Ukuran langkah karakter
-let stepSize =50; 
+let stepSize = 30;
 
-leftBtn.addEventListener("touchstart", function(){
-   
-    moveIntervalId = setInterval(()=>{
+leftBtn.addEventListener("touchstart", function () {
+
+    moveIntervalId = setInterval(() => {
         moveCharacter(-stepSize, 0);
         characterDirection(character, 'left');
-     }, moveDelay);
-     clean();
+    }, moveDelay);
+    clean();
 
 });
 
-upBtn.addEventListener("touchstart", function(){
-    moveIntervalId = setInterval(()=>{
+upBtn.addEventListener("touchstart", function () {
+    moveIntervalId = setInterval(() => {
         moveCharacter(0, -stepSize);
-     }, moveDelay);
-     clean();
+    }, moveDelay);
+    clean();
 });
 
-rightBtn.addEventListener("touchstart", function(){
+rightBtn.addEventListener("touchstart", function () {
     moveCharacter(stepSize, 0);
-    if(!animationRunning){
+    if (!animationRunning) {
         animationRunning = true;
-        runAnimation(character, 40, 1560);
+        runAnimation(character, 40, 560);
     }
 
- moveIntervalId = setInterval(()=>{
-    moveCharacter(stepSize, 0);
-    characterDirection(character, 'right');
- }, moveDelay);
+    moveIntervalId = setInterval(() => {
+        moveCharacter(stepSize, 0);
+        characterDirection(character, 'right');
+    }, moveDelay);
 
- clean();
+    clean();
     // startAnimation();
 });
 
-downBtn.addEventListener("touchstart", function(){
-    
-    moveIntervalId = setInterval(()=>{
+downBtn.addEventListener("touchstart", function () {
+
+    moveIntervalId = setInterval(() => {
         moveCharacter(0, stepSize);
-     }, moveDelay);
-     clean();
+    }, moveDelay);
+    clean();
 })
 
-dodgeBtn.addEventListener("click", function(){
+dodgeBtn.addEventListener("click", function () {
     dodgeBackwards();
 })
 
-function clean(){
+function clean() {
     document.addEventListener('touchend', () => {
         clearInterval(moveIntervalId);
-      });
+    });
 }
 
 
 // character direction
 
-function characterDirection(element, direction){
-    if (direction === 'right'){
-      element.style.transform = 'scaleX(1)';
-    }else if (direction === 'left'){
-      element.style.transform = 'scaleX(-1)';
-  
+function characterDirection(element, direction) {
+    if (direction === 'right') {
+        element.style.transform = 'scaleX(1)';
+    } else if (direction === 'left') {
+        element.style.transform = 'scaleX(-1)';
+
     }
-     
-  }
+
+}
 
 
 // =============================================================== controller-end =======================================================================
@@ -120,39 +116,40 @@ function characterDirection(element, direction){
 
 
 
-let enemyMovementSpeed = 2;
-function moveEnemyTowardsPlayer(){
+let enemyMovementSpeed = 1;
 
-  
-  let playerPosition = character.getBoundingClientRect();
-  let enemyPosition = enemy.getBoundingClientRect();
-
-  let playerX = playerPosition.left;
-  let playerY = playerPosition.top;
-
-  let enemyX = enemyPosition.left;
-  let enemyY = enemyPosition.top;
-
-  let dx = playerX - enemyX;
-  let dy = playerY - enemyY;
-
-  let jarak = Math.sqrt(dx*dx + dy*dy);
+function moveEnemyTowardsPlayer() {
 
 
-  let vx = (dx / jarak)*enemyMovementSpeed;
-  let vy = (dy / jarak)*enemyMovementSpeed;
+    let playerPosition = character.getBoundingClientRect();
+    let enemyPosition = enemy.getBoundingClientRect();
 
-  if (jarak>enemyMovementSpeed){
-      enemy.style.left = enemyX + vx + 'px';
-      enemy.style.top = enemyY + vy + 'px';
-  } 
+    let playerX = playerPosition.left;
+    let playerY = playerPosition.top;
 
-  if(enemyPosition.left>playerPosition.left){
-    enemy.classList.add("flipped");
-  } else {
-    enemy.classList.remove("flipped");
-  }
-  
+    let enemyX = enemyPosition.left;
+    let enemyY = enemyPosition.top;
+
+    let dx = playerX - enemyX;
+    let dy = playerY - enemyY;
+
+    let jarak = Math.sqrt(dx * dx + dy * dy);
+
+
+    let vx = (dx / jarak) * enemyMovementSpeed;
+    let vy = (dy / jarak) * enemyMovementSpeed;
+
+    if (jarak > enemyMovementSpeed) {
+        enemy.style.left = enemyX + vx + 'px';
+        enemy.style.top = enemyY + vy + 'px';
+    }
+
+    if (enemyPosition.left > playerPosition.left) {
+        enemy.classList.add("flipped");
+    } else {
+        enemy.classList.remove("flipped");
+    }
+
 }
 
 
@@ -161,7 +158,7 @@ function moveEnemyTowardsPlayer(){
 
 let isCollisionOccurred = false;
 // =============================================================== player movement =======================================================================
-function moveCharacter(deltaX, deltaY){
+function moveCharacter(deltaX, deltaY) {
     const characterPosition = character.getBoundingClientRect();
     const benderaPosition = bendera.getBoundingClientRect();
     const enemyPosition = enemy.getBoundingClientRect();
@@ -175,37 +172,45 @@ function moveCharacter(deltaX, deltaY){
 
 
 
-    if (newCharacterX >= 0 && newCharacterX + characterPosition.width <= window.innerWidth){
+    if (newCharacterX >= 0 && newCharacterX + characterPosition.width <= window.innerWidth) {
         character.style.left = newCharacterX + "px";
     }
 
-    if (newCharacterY >= 0 && newCharacterY + characterPosition.height <= window.innerHeight){
+    if (newCharacterY >= 0 && newCharacterY + characterPosition.height <= window.innerHeight) {
         character.style.top = newCharacterY + "px";
     }
 
 
-    if(isColliding(characterPosition, benderaPosition)){
-        alert('YOU WIN!!!');
-        isCollisionOccurred = true;
+    if (isColliding(characterPosition, benderaPosition)) {
+        let gameOver = document.getElementById('game_over_overlay');
+        gameOver.style.display = 'flex';
+        let winner = document.getElementById('winner');
+        winner.innerText = 'WIN'
+        character.style.display = 'none';
+        enemy.style.display = 'none';
         return;
     }
-    if(isColliding(characterPosition, enemyPosition)){
-        alert('YOU LOSE');
-        isCollisionOccurred = true;
+    if (isColliding(characterPosition, enemyPosition)) {
+        let gameOver = document.getElementById('game_over_overlay');
+        gameOver.style.display = 'flex';
+        let winner = document.getElementById('winner');
+        winner.innerText = 'LOSE';
+        character.style.display = 'none';
+        enemy.style.display = 'none';
         return;
     }
 
 
 
-    function isColliding(characterPosition, benderaPosition){
+    function isColliding(characterPosition, benderaPosition) {
         return (
-            characterPosition.left < benderaPosition.right && 
+            characterPosition.left < benderaPosition.right &&
             characterPosition.right > benderaPosition.left &&
             characterPosition.top < benderaPosition.bottom &&
             characterPosition.bottom > benderaPosition.top
         );
     }
- 
+
 }
 
 // =============================================================== player movement-end =======================================================================
@@ -215,8 +220,8 @@ function moveCharacter(deltaX, deltaY){
 
 // =============================================================== player skills =======================================================================
 // dodge function 
-function dodgeBackwards(){
-    if(!isDodging){
+function dodgeBackwards() {
+    if (!isDodging) {
         isDodging = true;
         let playerPosition = character.getBoundingClientRect();
         let playerX = playerPosition.left;
@@ -224,22 +229,22 @@ function dodgeBackwards(){
 
         let startTime = null;
 
-        function dodgeAnimmation(timestamp){
+        function dodgeAnimmation(timestamp) {
             if (!startTime) startTime = timestamp;
             let progress = timestamp - startTime;
             let newX = playerX - (progress / dodgeDuration) * dodgeDistance;
 
-            if (newX <= targetX){
+            if (newX <= targetX) {
                 newX = targetX;
                 isDodging = false;
             }
-            
-            if (playerX >= 0 && targetX + playerPosition.width <= window.innerWidth){
 
-                character.style.left =  newX + 'px';
+            if (playerX >= 0 && targetX + playerPosition.width <= window.innerWidth) {
+
+                character.style.left = newX + 'px';
             }
- 
-            if(isDodging){
+
+            if (isDodging) {
                 requestAnimationFrame(dodgeAnimmation);
             }
 
@@ -256,19 +261,19 @@ function dodgeBackwards(){
 
 let tID;
 
-function runAnimation(media, playSpeed, frameTotal){
-    let currentFrame = 120;
+function runAnimation(media, playSpeed, frameTotal) {
+    let currentFrame = 50;
     const interval = playSpeed;
-    tID = setInterval (()=>{
+    tID = setInterval(() => {
 
-  
-    media.style.backgroundPosition = `-${currentFrame}px 0px`;
-    if (currentFrame < frameTotal){
-        currentFrame = currentFrame + 120;
-    } else {
-        currentFrame = 120;
-    }
-}, interval);
+
+        media.style.backgroundPosition = `-${currentFrame}px 0px`;
+        if (currentFrame < frameTotal) {
+            currentFrame = currentFrame + 50;
+        } else {
+            currentFrame = 50;
+        }
+    }, interval);
 }
 
 
@@ -276,18 +281,13 @@ function runAnimation(media, playSpeed, frameTotal){
 function toggleFullscreen() {
     var elem = document.documentElement;
     if (elem.requestFullscreen) {
-      elem.requestFullscreen();
+        elem.requestFullscreen();
     } else if (elem.mozRequestFullScreen) { // Firefox
-      elem.mozRequestFullScreen();
+        elem.mozRequestFullScreen();
     } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
-      elem.webkitRequestFullscreen();
+        elem.webkitRequestFullscreen();
     } else if (elem.msRequestFullscreen) { // IE/Edge
-      elem.msRequestFullscreen();
+        elem.msRequestFullscreen();
     }
-  }
+}
 // =============================================================== fullscreen-end =======================================================================
-
-
-
-
-

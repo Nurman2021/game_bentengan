@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/css/start-btn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,6 +24,26 @@
         </div>
     </div>
     <!-- ================================== start button ================================== -->
+
+
+    <!-- ================================== game over ================================== -->
+    <div id="game_over_overlay" class="game_status">
+
+        <h1 style="display: block;">
+            <span style="color: rgb(0, 221, 255);">YOU</span> 
+            <span style="color: yellow;" id="winner">WIN</span>
+        </h1>
+        <div id="popup">
+            <!-- <button id="startButton"></button> -->
+            <button onclick="refreshPage()">REPLAY</button>
+        </div>
+        <div id="popup">
+            <!-- <button id="startButton"></button> -->
+
+            <button id="exit">EXIT</button>
+        </div>
+    </div>
+    <!-- ================================== game over ================================== -->
 
 
     <!-- ================================== in game component ================================== -->
@@ -47,7 +70,7 @@
     </div>
 
 
-<h1 id="nama">NURMAN AWALUDDIN</h1>
+<h1 id="nama"></h1>
  
     <!-- ================================== controller ================================== -->
 
@@ -61,6 +84,7 @@
 });
 
 </script>
+<script src="js/script.js"></script>
 </body>
 
 
